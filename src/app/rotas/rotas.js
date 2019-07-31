@@ -1,3 +1,4 @@
+const LivroDao = require('../infra/livro-dao');
 const db = require('../../config/database');
 
 module.exports = (app) =>{
@@ -16,13 +17,24 @@ module.exports = (app) =>{
     });
 
     app.get('/livros', (req, res) =>{
-        db.all('SELECT * FROM LIVROS', (erro, resultados)=>{
+
+        const livroDao = new LivroDao(db);
+        livroDao.lista((erro, resultados) =>{
 
             res.marko(
                 require('../views/livros/lista/lista.marko'), {
                     livros: resultados
                 }
             );
-        });      
+        }); 
+
+        // db.all('SELECT * FROM LIVROS', (erro, resultados)=>{
+
+        //     res.marko(
+        //         require('../views/livros/lista/lista.marko'), {
+        //             livros: resultados
+        //         }
+        //     );
+        // });      
     });
 }
