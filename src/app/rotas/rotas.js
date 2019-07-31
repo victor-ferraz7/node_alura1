@@ -38,8 +38,8 @@ module.exports = (app) =>{
         console.log(req.body)
         const livroDao = new LivroDao(db);
 
-        livroDao.adiciona()
-                    .then()
+        livroDao.adiciona(req.body)
+                    .then(res.redirect("/livros"))
                     .catch(erro => console.log(erro));
-    })
+    });
 }
