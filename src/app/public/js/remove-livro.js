@@ -1,5 +1,4 @@
 let tabelaLivros = document.querySelector('#livros');
-
 tabelaLivros.addEventListener('click', (evento) => {
     let elementoClicado = evento.target;
 
@@ -13,5 +12,5 @@ tabelaLivros.addEventListener('click', (evento) => {
             })
             .catch(erro => console.log(erro));
     }
-})
+});
 

@@ -88,6 +88,7 @@ class LivroDao{
                     if (erro) {
                         return reject('Não foi possível remover o lívro !');
                     }
+                    return resolve();
                 }
             )
         })

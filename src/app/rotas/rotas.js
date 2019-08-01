@@ -46,7 +46,7 @@ module.exports = (app) =>{
     app.post('/livros', (req, res) =>{
         console.log(req.body)
         const livroDao = new LivroDao(db);
-
+        
         livroDao.adiciona(req.body)
                     .then(res.redirect("/livros"))
                     .catch(erro => console.log(erro));
@@ -59,5 +59,14 @@ module.exports = (app) =>{
         livroDao.remove(id)
                 .then(() => res.status(200).end())
                 .catch(erro => console.log(erro));
-    })
+    });
+
+    app.put('/livros', (req, res) =>{
+        console.log(req.body)
+        const livroDao = new LivroDao(db);
+        
+        livroDao.atualiza(req.body)
+                    .then(res.redirect("/livros"))
+                    .catch(erro => console.log(erro));
+    });
 }
